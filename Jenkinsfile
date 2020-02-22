@@ -23,23 +23,29 @@ pipeline {
                 
             }
           } 
-          
+
         stage("Deploy") {
             steps {
                 sh "java -jar target/dependency/webapp-runner.jar target/*.war || true"
                 
             }
+            post {
+                success {
+                    // we only worry about archiving the jar file if the build steps are successful
+                    archiveArtifacts(artifacts: 'target/*.jar', allowEmptyArchive: true)
+                }
         }
 
         stage("Production") {
-        when {
-                environment TEST_PREFIX: "test-IMAGE"
+        //when {
+          //      environment TEST_PREFIX: "test-IMAGE"
                 
-            }
+           // }
             steps {
                 sh "ok"
                 
             }
+
         }
   
     }
