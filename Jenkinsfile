@@ -9,7 +9,7 @@ pipeline {
   environment {
 
       
-     jobName="$JOB_NAME"
+     jobName="hello"
    
     
   }
@@ -25,7 +25,7 @@ pipeline {
 
         script {
 
-          sh '/home/jenkinsbot/plugin/scripts/jenkins/scripts/unittest.sh'
+          sh 'ls'
 
         }
         
