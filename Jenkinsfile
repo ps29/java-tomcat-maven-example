@@ -8,6 +8,15 @@ pipeline {
     }
 
     stages {
+
+         stage("Getting Information Regarding Build") {
+            steps {
+                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                
+                
+            }
+        }
+
         
           stage("Compile Package") {
             steps {
@@ -30,10 +39,16 @@ pipeline {
                 
             }
             post {
+                always {
+                    echo "always forever"
+                  }
                 success {
                     // we only worry about archiving the jar file if the build steps are successful
-                    archiveArtifacts(artifacts: 'target/*.jar', allowEmptyArchive: true)
+                    archiveArtifacts(artifacts: 'target/*.war', allowEmptyArchive: true)
                 }
+              failure {
+                  echo "failed"
+               }
            }
         }
 
