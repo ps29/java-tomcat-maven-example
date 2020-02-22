@@ -19,13 +19,13 @@ pipeline {
 
         stage("Run tests") {
             steps {
-                sh "mvn test"
+                sh "/usr/local/bin/mvn test"
                 
             }
 
-        stage("Build and Deploy") {
+        stage("Deploy") {
             steps {
-                sh "java -jar target/dependency/webapp-runner.jar target/*.war"
+                sh "java -jar target/dependency/webapp-runner.jar target/*.war "
                 
             }
         }
