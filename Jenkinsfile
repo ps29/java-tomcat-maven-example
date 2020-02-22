@@ -1,3 +1,4 @@
+#!/usr/local/bin/groovy
 pipeline {
     agent { node { label 'master' } }
 
