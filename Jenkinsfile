@@ -9,9 +9,9 @@ pipeline {
 
     stages {
         
-          stage("Build and start test image") {
+          stage("Compile Package") {
             steps {
-                sh "ls"
+                sh "/usr/local/bin/mvn package"
                 
                 
             }
@@ -19,7 +19,13 @@ pipeline {
 
         stage("Run tests") {
             steps {
-                sh "ls"
+                sh "mvn test"
+                
+            }
+
+        stage("Build and Deploy") {
+            steps {
+                sh "java -jar target/dependency/webapp-runner.jar target/*.war"
                 
             }
         }
