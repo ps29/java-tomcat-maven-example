@@ -44,8 +44,8 @@ pipeline {
             steps {
                 sh "ok"
                 
-            }
-
+             }
+           }
         }
   
     }
