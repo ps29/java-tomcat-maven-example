@@ -58,7 +58,7 @@ pipeline {
                 
            // }
             steps {
-                sh "ok"
+                echo "task fro production"
                 
              }
            }
