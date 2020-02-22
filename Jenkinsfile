@@ -34,7 +34,7 @@ pipeline {
         always {
             sh "ls"
         }
-
+    }
       
     }
 }
