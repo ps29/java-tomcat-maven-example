@@ -23,6 +23,7 @@ pipeline {
                 
             }
           } 
+          
         stage("Deploy") {
             steps {
                 sh "java -jar target/dependency/webapp-runner.jar target/*.war || true"
@@ -30,11 +31,16 @@ pipeline {
             }
         }
 
-      post {
-        always {
-            sh "ls"
+        stage("Production") {
+        when {
+                environment TEST_PREFIX: "test-IMAGE"
+                
+            }
+            steps {
+                sh "ok"
+                
+            }
         }
-    }
-      
+  
     }
 }
