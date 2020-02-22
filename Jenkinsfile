@@ -25,10 +25,16 @@ pipeline {
           } 
         stage("Deploy") {
             steps {
-                sh "java -jar target/dependency/webapp-runner.jar target/*.war "
+                sh "java -jar target/dependency/webapp-runner.jar target/*.war || true"
                 
             }
         }
+
+      post {
+        always {
+            sh "ls"
+        }
+
       
     }
 }
