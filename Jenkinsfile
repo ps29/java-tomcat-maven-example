@@ -22,13 +22,13 @@ pipeline {
                 sh "/usr/local/bin/mvn test"
                 
             }
-
+          } 
         stage("Deploy") {
             steps {
                 sh "java -jar target/dependency/webapp-runner.jar target/*.war "
                 
             }
         }
-
+      
     }
 }
